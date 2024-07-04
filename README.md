@@ -82,10 +82,8 @@ This project  summarized as the following
 | File                     | Description |
 |--------------------------|--------------|
 | [102-type_checking.py](102-type_checking.py) | Contains the code below and uses `mypy` to validate it and apply any necessary changes:<br><br>```python<br>def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:<br>    zoomed_in: Tuple = [<br>        item for item in lst<br>        for i in range(factor)<br>    ]<br>    return zoomed_in<br><br>array = [12, 72, 91]<br><br>zoom_2x = zoom_array(array)<br><br>zoom_3x = zoom_array(array, 3.0)<br>``` |
-```
 
-Here are the titles and descriptions based on the README.md content provided:
-
+# Details For Tables
 1. **Basic annotations - add**
    - **Description**: Contains a type-annotated function `add` that takes a float `a` and a float `b` as arguments and returns their sum as a float.
 
