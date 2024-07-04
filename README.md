@@ -1,5 +1,8 @@
 # 0x00. Python - Variable Annotations
 
+
+![y9y25tefi5401](https://github.com/Zed-bard/alx-backend-python/assets/132649828/f21dbc1e-39ee-4ec1-84df-247b48fd8a97)
+
 ### Variable (Type) Annotations
 
 This project  summarized as the following
