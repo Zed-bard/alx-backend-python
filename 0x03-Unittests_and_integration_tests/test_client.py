@@ -18,6 +18,17 @@ from client import (
 from fixtures import TEST_PAYLOAD
 
 
+def memoize(func):
+    """Decorator to memoize a method."""
+    cache = {}
+
+    def memoizer(self):
+        if self not in cache:
+            cache[self] = func(self)
+        return cache[self]
+    return memoizer
+
+
 class TestGithubOrgClient(unittest.TestCase):
     """Tests the `GithubOrgClient` class."""
     @parameterized.expand([
@@ -162,3 +173,26 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         """Removes the class fixtures after running all tests."""
         cls.get_patcher.stop()
 
+
+class TestMemoize(unittest.TestCase):
+    """Tests the memoize decorator."""
+    def test_memoize(self):
+        """Test memoize decorator."""
+
+        class TestClass:
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+            test_instance = TestClass()
+            self.assertEqual(test_instance.a_property, 42)
+            self.assertEqual(test_instance.a_property, 42)
+            mock_method.assert_called_once()
+
+
+if __name__ == "__main__":
+    unittest.main()
